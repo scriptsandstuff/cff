@@ -11,6 +11,7 @@ html, body, #map, #location {
 }
 
 #noscript-text {
+    font-size: 2rem;
     color: red;
 }
 

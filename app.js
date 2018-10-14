@@ -1,6 +1,6 @@
 /**
- * let L = require('leaflet');
- * let L = require('leaflet'); wasn't working for uglifyjs 
+ * var L = require('leaflet');
+ * var L = require('leaflet'); wasn't working for uglifyjs 
  *    ..because it is es6 
  *    so we use teaser for es6
  *    ... and we use all external libs anyway
@@ -22,7 +22,7 @@
 // const css = require('./style.css');
 
 
-var map; // instance of leaflet map 
+var map; // instance of leafvar map 
 var markers = [];
 var markerGroup;
 
@@ -180,16 +180,16 @@ function initmap() {
  */
 function createControls(map) {
     // tile layer
-    let osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-    let osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
-    let osm = new L.TileLayer(osmUrl, {minZoom: 13, maxZoom: 18, attribution: osmAttrib});    
+    var osmUrl='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    var osmAttrib='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+    var osm = new L.TileLayer(osmUrl, {minZoom: 13, maxZoom: 18, attribution: osmAttrib});    
     map.addLayer(osm);
     
     // scale layer
     L.control.scale().addTo(map);
     
     //search layer
-    let searchControl = L.control('topright'); 	
+    var searchControl = L.control('topright'); 	
     searchControl.onAdd = function (map) {
         this._div = L.DomUtil.create('div', 'searchDiv'); 
         this.update();
@@ -220,12 +220,12 @@ function createLayers(map, venues) {
  * 
  */
 function createMarkers(venues) {
-    let mkrs = [];
-    let contents = '';
-//     let popup = L.popup();
+    var mkrs = [];
+    var contents = '';
+//     var popup = L.popup();
     
-    for (let i = 0; i , i < venues.length; i++) {
-		let marker = L.marker( [venues[i].lat, venues[i].lng] );
+    for (var i = 0; i , i < venues.length; i++) {
+		var marker = L.marker( [venues[i].lat, venues[i].lng] );
         marker.venue = venues[i].name;
         contents = createPopContents(venues[i], marker)[0];
         marker.bindPopup(contents, {closeOnClick:false});     
@@ -243,14 +243,14 @@ function createMarkers(venues) {
  */
 function createPopContents(venue, marker) {
 // 	class:'leaflet-popup-content-wrapper leaflet-popup-content'
-    let container = $('<div />', {class:'popContainer'});	//text:venue.name, 
-	let title = $('<h5 />', {text:venue.name, class:''});
+    var container = $('<div />', {class:'popContainer'});	//text:venue.name, 
+	var title = $('<h5 />', {text:venue.name, class:''});
 	container.append(title);		
     
-    let n = venue.events.length;   
+    var n = venue.events.length;   
     
-//     let evts;
-    let venue_body;
+//     var evts;
+    var venue_body;
     if (n > 1) {
 //         venue_body = createAccordion(venue);        
         venue_body = $('<div />', {id:"accordion"+venue.id, class:"accordion"}); 
@@ -289,9 +289,9 @@ function createPopContents(venue, marker) {
  *
  */
 function createDropDown(venues) {
-	let sel = $('select'); // should probably use the id...
+	var sel = $('select'); // should probably use the id...
 //     sel.append('<option value="" class="text-hide" selected disabled> <a class="cen">search</a> </option>');
-	for (let i = 0; i , i < venues.length; i++) {
+	for (var i = 0; i , i < venues.length; i++) {
 // 		console.log(venues[i].name);
 		sel.append('<option value="">' + venues[i].name + '</option>');
 	}
@@ -338,18 +338,18 @@ createDropDown(venues);
  */
 $('.selectpicker').on('change', function(e){
     deselectVenue();
-    // let selected = $(this).find("option:selected").val(); 
+    // var selected = $(this).find("option:selected").val(); 
     // why is val empty??
     // https://stackoverflow.com/questions/25720986/bootstrap-select-how-to-fire-event-on-change#28073479
-    let selected = $(this).find("option:selected")[0].firstChild.data; 
+    var selected = $(this).find("option:selected")[0].firstChild.data; 
        
 //     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
     function isS(ms) { 
         return ms.venue === selected;
     }
-    let found = markers.find(isS);
+    var found = markers.find(isS);
     /*
-    let found = markers.find(function(selected) {
+    var found = markers.find(function(selected) {
         return markers.venue === selected;
     });*/
     if (found) {
@@ -358,7 +358,7 @@ $('.selectpicker').on('change', function(e){
         console.log('marker with venue == selected not found');
     }
         /*
-    for (let i = 0; i < markers.length; i++) {
+    for (var i = 0; i < markers.length; i++) {
         if (markers[i].venue === selected) {
             selectVenue(markers[i]);
             break;
@@ -383,9 +383,9 @@ $('.selectpicker').on('shown.bs.select', function(e){
  * 
  */
 map.on('click', function(e) {
-    let evt = e.originalEvent;
-    let t = evt.target;
-//     let n = t.nodeName;    
+    var evt = e.originalEvent;
+    var t = evt.target;
+//     var n = t.nodeName;    
     
 //     we could just check the immediate parent to see if it is a span ...
 //     should also be able to use the bubble count ...
@@ -429,9 +429,9 @@ map.on('click', function(e) {
  * well this does nothing amd I'd say the one above doesn't either
  */
 // $(document).on('mousewheel', function(e) {
-//     let evt = e.originalEvent;
-//     let t = evt.target;
-// //     let n = t.nodeName;    
+//     var evt = e.originalEvent;
+//     var t = evt.target;
+// //     var n = t.nodeName;    
 //     if ( !$(t).parents().is('[class*="leaflet-control-container"]') ) {   
 // //         deselectVenue();
 //         preventDefault();
