@@ -1,0 +1,106 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+html, body, #map, #location {
+    height: 100vh; 
+    width: 100vw;
+}
+
+#noscript-text {
+    color: red;
+}
+
+
+.my_select {
+    margin: auto;
+    margin-top: 10vh;
+}
+
+.searchDiv {
+    padding-right: 2rem;
+}
+
+/*#venue_select {
+    overflow-y: scroll;
+}*/
+
+.inner {
+    max-height: 60vh;
+    overflow-y: scroll;
+}
+/*
+.dropdown-menu {
+    
+}*/
+
+.leaflet-popup-content {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+/*     margin: 0; */
+}
+
+.leaflet-popup-content h5 {
+    padding-left: 0.75rem;
+    border-bottom: 0.2rem solid #555;
+    margin-bottom: 0;
+}
+
+.list-group-item {
+    padding-left: 0.75rem;
+}
+.evt-body {
+    max-height: 40vh;
+    overflow-y: auto;
+}
+
+.card-header, .card-body{
+    padding: 0;
+    margin: 0;
+}
+
+/*.event_time{
+	font-weight: bold;
+}*/
+
+.evt-date-time{
+    font-size: 1rem;
+    border-radius: 12px;
+}
+
+.evt-date-time {
+    padding: 0.75rem;
+    border-radius: 12px;
+    border: none;
+}
+.accordion {
+    border-radius: 12px;
+}
+
+.evt-date-time>.evt-body, .evt-date-time>.evt-price, .card-body>p{
+    font-size: 0.9rem;
+/*     padding: 0.1rem 0.1rem 0 0.75rem; */
+    margin: 0;
+}
+
+.evt-price {
+	font-weight: bold;
+	text-align: right;
+}
+
+.accordion {
+    overflow-y: auto;
+    max-height: 50vh;
+    /*min-width: 26em;*/
+    min-width: 300px;
+    /*max width of leaflet-popup 300px, (why do they use px?)*/
+    text-align: left;
+}
+
+div.list-group-item.btn{
+    text-align: left;
+}
